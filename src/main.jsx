@@ -2,8 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Search, Heart, ShoppingBag, Menu, X, ArrowRight, MapPin, LockKeyhole, Phone, Check } from 'lucide-react';
 import './styles.css';
-import Admin from './Admin';
-import { getData } from './store';
+import { getData } from './store-public';
 
 const institutional = {
   brandIntro: { subtitle: 'Moda para vestir, confiança para escolher.', text: 'A VESTES! nasceu para oferecer moda, qualidade e praticidade para quem busca se vestir bem em todos os momentos.' },
@@ -47,11 +46,11 @@ function Storefront() {
     <main>
       <section id="inicio" className="hero">
         <div><small>VESTES! • RIO BRANCO — ACRE</small><h1>{settings.heroTitle || 'Seu estilo começa aqui.'}</h1><p>{settings.heroText || 'Descubra roupas, calçados e acessórios para transformar seu estilo em cada ocasião.'}</p><div className="buttons"><a href="#produtos" className="primary">Comprar agora <ArrowRight size={18}/></a><a href="#novidades" className="secondary">Conhecer novidades</a></div></div>
-        <div className="hero-card"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85" alt="Moda"/><span>ESTILO<br/>EM MOVIMENTO</span></div>
+        <div className="hero-card"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=72" alt="Moda" fetchPriority="high" decoding="async"/><span>ESTILO<br/>EM MOVIMENTO</span></div>
       </section>
       <section className="brand-story"><div><small>A VESTES!</small><h2>{institutional.brandIntro.subtitle}</h2><p>{institutional.brandIntro.text}</p></div><div className="story-sign">VESTES<span>!</span></div></section>
       <section id="categorias" className="categories"><div className="section-title"><small>EXPLORE</small><h2>Encontre seu <i>estilo.</i></h2></div><div className="cat-grid">{categories.slice(0,6).map(c => <a className="cat" href="#produtos" key={c}><div className="cat-fallback">{c}</div><strong>{c}</strong><ArrowRight size={18}/></a>)}</div></section>
-      <section id="produtos" className="products"><div className="section-title row"><div><small>CURADORIA VESTES</small><h2>Peças que <i>inspiram.</i></h2></div></div><div className="product-grid">{products.map(p => { const price = Number(p.price || 0); const sale = p.salePrice != null ? Number(p.salePrice) : null; const finalPrice = sale != null ? sale : price; return <article className="product" key={p.id}><div className="photo"><img src={p.image} alt={p.name} onError={e => { e.currentTarget.style.display='none'; }}/>{sale != null && sale < price && <span>OFERTA</span>}<button><Heart size={18}/></button></div><small>{p.category}</small><h3>{p.name}</h3><div><del>{sale != null && sale < price ? `R$ ${price.toFixed(2).replace('.', ',')}` : ''}</del><strong>R$ {finalPrice.toFixed(2).replace('.', ',')}</strong></div><button className="buy" onClick={() => setCart(v => v + 1)}>Adicionar ao carrinho</button></article>; })}</div>{!products.length && <p>Nenhum produto encontrado.</p>}</section>
+      <section id="produtos" className="products"><div className="section-title row"><div><small>CURADORIA VESTES</small><h2>Peças que <i>inspiram.</i></h2></div></div><div className="product-grid">{products.map(p => { const price = Number(p.price || 0); const sale = p.salePrice != null ? Number(p.salePrice) : null; const finalPrice = sale != null ? sale : price; return <article className="product" key={p.id}><div className="photo"><img src={p.image} alt={p.name} loading="lazy" decoding="async" onError={e => { e.currentTarget.style.display='none'; }}/>{sale != null && sale < price && <span>OFERTA</span>}<button aria-label={`Favoritar ${p.name}`}><Heart size={18}/></button></div><small>{p.category}</small><h3>{p.name}</h3><div><del>{sale != null && sale < price ? `R$ ${price.toFixed(2).replace('.', ',')}` : ''}</del><strong>R$ {finalPrice.toFixed(2).replace('.', ',')}</strong></div><button className="buy" onClick={() => setCart(v => v + 1)}>Adicionar ao carrinho</button></article>; })}</div>{!products.length && <p>Nenhum produto encontrado.</p>}</section>
       <section id="novidades" className="editorial"><div><small>ROUPAS E CALÇADOS</small><h2>{institutional.clothing.title}</h2><p>{institutional.clothing.text}</p></div><div className="editorial-card">ESTILO<br/><i>CONFORTO</i><br/>PRATICIDADE</div></section>
       <section className="business-grid"><article><small>VAREJO</small><h2>{institutional.retail.title}</h2><p>{institutional.retail.text}</p></article><article id="atacado"><small>ATACADO</small><h2>{institutional.wholesale.title}</h2><p>{institutional.wholesale.text}</p><a className="primary" href={whatsapp}>Falar com o Atacado <ArrowRight size={18}/></a></article></section>
       <section id="sobre" className="about-full"><div className="about-intro"><small>{institutional.who.title.toUpperCase()}</small><h2>Moda para vestir,<br/><i>confiança para escolher.</i></h2><p>{institutional.who.text}</p></div><div className="about-story"><small>{institutional.story.title.toUpperCase()}</small><h3>{institutional.story.title}</h3><p>{institutional.story.text}</p></div></section>
@@ -64,10 +63,19 @@ function Storefront() {
   </div>;
 }
 
+function AdminGate({ onExit }) {
+  const [Admin, setAdmin] = useState(null);
+  const [error, setError] = useState(null);
+  useEffect(() => { let active = true; import('./Admin').then(mod => { if (active) setAdmin(() => mod.default); }).catch(setError); return () => { active = false; }; }, []);
+  if (error) return <div style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24,fontFamily:'Arial',textAlign:'center'}}><div><h1>VESTES!</h1><p>Não foi possível abrir o painel administrativo.</p><button onClick={onExit}>Voltar para a loja</button></div></div>;
+  if (!Admin) return <div className="app-loading"><div className="app-loading-box"><div className="app-loading-brand">VESTES<span>!</span></div><div className="app-loading-spinner"/><div className="app-loading-text">Abrindo o painel…</div></div></div>;
+  return <Admin onExit={onExit} />;
+}
+
 function App(){
   const [admin, setAdmin] = useState(() => window.location.hash === '#admin');
   useEffect(() => { const onHash = () => setAdmin(window.location.hash === '#admin'); window.addEventListener('hashchange', onHash); return () => window.removeEventListener('hashchange', onHash); }, []);
-  if (admin) return <Admin onExit={() => { window.location.hash = ''; setAdmin(false); }} />;
+  if (admin) return <AdminGate onExit={() => { window.location.hash = ''; setAdmin(false); }} />;
   return <Storefront/>;
 }
 
