@@ -4,35 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#171717" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="description" content="VESTES — Loja de moda em Rio Branco, Acre. Roupas, calçados e acessórios para todos os estilos." />
     <title>VESTES — Moda em Rio Branco</title>
     <style>
-      html,body,#root{margin:0;min-height:100%;width:100%;}
-      body{background:#faf9f7;}
-      .app-loading{min-height:100dvh;display:grid;place-items:center;padding:24px;box-sizing:border-box;font-family:Arial,sans-serif;color:#171717;text-align:center;}
-      .app-loading-box{max-width:360px;width:100%;}
-      .app-loading-brand{font-size:30px;font-weight:800;letter-spacing:-1px;}
-      .app-loading-brand span{color:#9b5c45;}
-      .app-loading-text{color:#666;font-size:14px;line-height:1.6;margin-top:12px;}
-      .app-loading-spinner{width:28px;height:28px;border:3px solid #ddd;border-top-color:#9b5c45;border-radius:50%;margin:22px auto;animation:vspin .8s linear infinite;}
-      @keyframes vspin{to{transform:rotate(360deg)}}
+      *{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;background:#faf9f7;color:#171717;font-family:Arial,Helvetica,sans-serif}body{overflow-x:hidden}.fallback{min-height:100dvh}.fallback-top{padding:8px 16px;background:#171717;color:#fff;text-align:center;font-size:11px;letter-spacing:.08em}.fallback-header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px clamp(16px,4vw,48px);background:rgba(250,249,247,.97);border-bottom:1px solid #e7e1db}.brand{font-size:25px;font-weight:900;letter-spacing:-.05em;text-decoration:none;color:#171717}.brand span{color:#9b5c45}.fallback-nav{display:none;gap:18px;font-size:13px}.fallback-nav a{color:#171717;text-decoration:none}.fallback-main{padding:0 clamp(16px,4vw,48px)}.hero{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;max-width:1180px;margin:0 auto;padding:clamp(48px,9vw,100px) 0}.eyebrow{font-size:11px;letter-spacing:.14em;font-weight:700;color:#9b5c45}.hero h1{font-family:Georgia,serif;font-size:clamp(42px,7vw,82px);line-height:.95;letter-spacing:-.055em;margin:14px 0 20px;max-width:650px}.hero p{font-size:17px;line-height:1.7;color:#666;max-width:570px}.hero-card{min-height:420px;border-radius:18px;overflow:hidden;background:#e9e1d8;display:flex;align-items:center;justify-content:center}.hero-card img{width:100%;height:100%;min-height:420px;object-fit:cover;display:block}.section{max-width:1180px;margin:0 auto;padding:60px 0}.section h2{font-family:Georgia,serif;font-size:clamp(30px,5vw,48px);margin:8px 0 28px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid #e8e1da;border-radius:14px;padding:24px;min-height:150px}.card strong{font-size:18px}.cta{background:#171717;color:#fff;border-radius:18px;padding:34px;margin:20px 0 60px}.cta p{color:#cfcfcf;line-height:1.6}.button{display:inline-block;background:#fff;color:#171717;text-decoration:none;padding:13px 18px;border-radius:999px;font-weight:700;font-size:14px}.footer{padding:40px clamp(16px,4vw,48px);background:#171717;color:#fff}.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer p{color:#aaa;font-size:13px}.loading-note{position:fixed;right:12px;bottom:12px;background:#171717;color:#fff;border-radius:999px;padding:8px 12px;font-size:11px;opacity:.8}.fallback.ready .loading-note{display:none}@media(min-width:800px){.fallback-nav{display:flex}.mobile-menu{display:none}}@media(max-width:799px){.hero{grid-template-columns:1fr;padding:44px 0}.hero-card{min-height:280px;max-height:420px}.hero-card img{min-height:280px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero h1{font-size:clamp(42px,14vw,64px)}.fallback-header{padding:14px 16px}.section{padding:44px 0}}@media(max-width:430px){.grid{grid-template-columns:1fr}.hero{padding-top:34px}.hero-card{min-height:240px}.hero-card img{min-height:240px}.section{padding:36px 0}.card{padding:20px}.cta{padding:26px;margin-bottom:38px}}
     </style>
   </head>
   <body>
     <div id="root">
-      <div class="app-loading" role="status" aria-live="polite">
-        <div class="app-loading-box">
-          <div class="app-loading-brand">VESTES<span>!</span></div>
-          <div class="app-loading-spinner"></div>
-          <div class="app-loading-text">Carregando a loja…</div>
-        </div>
+      <div class="fallback" id="fallback-store">
+        <div class="fallback-top">RIO BRANCO • ACRE &nbsp; | &nbsp; MODA PARA TODOS OS MOMENTOS</div>
+        <header class="fallback-header"><a class="brand" href="#inicio">VESTES<span>!</span></a><nav class="fallback-nav"><a href="#produtos">Produtos</a><a href="#categorias">Categorias</a><a href="#atacado">Atacado</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav><a class="button" href="#produtos">Comprar</a></header>
+        <main class="fallback-main">
+          <section class="hero" id="inicio"><div><div class="eyebrow">VESTES! • RIO BRANCO — ACRE</div><h1>Seu estilo começa aqui.</h1><p>Descubra roupas, calçados e acessórios para transformar seu estilo em cada ocasião.</p><a class="button" href="#produtos">Ver produtos</a></div><div class="hero-card"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=65" alt="Moda VESTES" fetchpriority="high"></div></section>
+          <section class="section" id="categorias"><div class="eyebrow">EXPLORE</div><h2>Encontre seu estilo.</h2><div class="grid"><div class="card"><strong>Feminino</strong><p>Peças para diferentes ocasiões.</p></div><div class="card"><strong>Masculino</strong><p>Estilo, conforto e praticidade.</p></div><div class="card"><strong>Calçados</strong><p>Modelos para completar seu visual.</p></div><div class="card"><strong>Acessórios</strong><p>Detalhes que transformam seu look.</p></div><div class="card"><strong>Moda Casual</strong><p>Peças para o dia a dia.</p></div><div class="card"><strong>Moda Social</strong><p>Elegância para momentos especiais.</p></div></div></section>
+          <section class="section" id="produtos"><div class="eyebrow">CURADORIA VESTES</div><h2>Peças que inspiram.</h2><div class="grid"><div class="card"><strong>Vestido Aurora</strong><p>R$ 149,90</p></div><div class="card"><strong>Tênis Urban</strong><p>R$ 249,90</p></div><div class="card"><strong>Bolsa Luna</strong><p>R$ 179,90</p></div></div></section>
+          <section class="cta" id="atacado"><div class="eyebrow">ATACADO</div><h2>Moda para quem quer vender mais.</h2><p>Atendimento para lojistas, revendedores e empreendedores em Rio Branco e outras cidades.</p><a class="button" href="https://wa.me/5599999999999">Falar com o Atacado</a></section>
+          <section class="section" id="sobre"><div class="eyebrow">SOBRE A VESTES!</div><h2>Moda para vestir, confiança para escolher.</h2><p>Somos uma loja de moda localizada em Rio Branco, Acre, criada para oferecer roupas, calçados e acessórios que unem estilo, praticidade e variedade.</p></section>
+        </main>
+        <footer class="footer" id="contato"><div class="footer-inner"><div><strong>VESTES!</strong><p>Vista seu estilo. Viva sua história.</p></div><div><strong>Rio Branco – Acre, Brasil</strong><p>Atendimento para varejo e atacado.</p></div></div></footer>
+        <div class="loading-note">Carregando recursos…</div>
       </div>
     </div>
-    <noscript>
-      <div style="padding:40px 20px;font-family:Arial,sans-serif;text-align:center">Ative o JavaScript no navegador para acessar a VESTES.</div>
-    </noscript>
+    <noscript><div style="padding:40px 20px;text-align:center;font-family:Arial">A VESTES está disponível, mas o JavaScript está desativado neste navegador.</div></noscript>
     <script type="module" src="./src/main.jsx"></script>
   </body>
 </html>
