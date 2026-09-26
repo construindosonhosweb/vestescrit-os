@@ -1,0 +1,9 @@
+const KEY='veste_store_v1';
+const categories=['Feminino','Masculino','Calçados','Acessórios','Moda Casual','Moda Social'];
+const base=[['Vestido Aurora','Feminino','149.90','189.90'],['Tênis Urban','Calçados','249.90','299.90'],['Bolsa Luna','Acessórios','179.90','219.90'],['Camisa Essential','Masculino','129.90','159.90'],['Óculos Solar','Acessórios','99.90','139.90'],['Jaqueta Street','Moda Casual','299.90','349.90']];
+const images=['https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=72','https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=72','https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=72','https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=700&q=72'];
+const defaultSettings={storeName:'VESTES!',city:'Rio Branco',state:'Acre',country:'Brasil',heroTitle:'Seu estilo começa aqui.',heroText:'Descubra roupas, calçados e acessórios para transformar seu estilo em cada ocasião.',about:'Moda para vestir, confiança para escolher.'};
+function seed(){return base.map((p,i)=>({id:String(i+1),name:p[0],category:p[1],price:Number(p[3]),salePrice:Number(p[2]),stock:25+i*4,sku:`VST-${String(i+1).padStart(4,'0')}`,image:images[i%images.length],active:true,featured:i<4,new:i<3}))}
+function saveData(data){try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}}
+function makeDefault(){const data={products:seed(),categories:[...categories],settings:{...defaultSettings}};saveData(data);return data}
+export function getData(){try{const raw=localStorage.getItem(KEY);if(raw){const d=JSON.parse(raw);if(d&&Array.isArray(d.products)&&Array.isArray(d.categories)&&d.settings&&typeof d.settings==='object')return{products:d.products,categories:d.categories.length?d.categories:[...categories],settings:{...defaultSettings,...d.settings}}}}catch{try{localStorage.removeItem(KEY)}catch{}}return makeDefault()}
