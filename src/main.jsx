@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Search, Heart, ShoppingBag, Menu, X, ArrowRight, MapPin, LockKeyhole, Phone, Check } from 'lucide-react';
+import { Search, Heart, ShoppingBag, Menu, X, ArrowRight, MapPin, LockKeyhole, Phone, Check, ShieldCheck } from 'lucide-react';
 import './styles.css';
 import { getData } from './store-public';
 
@@ -59,17 +59,21 @@ function Storefront() {
       <section className="why"><small>POR QUE ESCOLHER A VESTES!?</small><h2>{institutional.why.title}</h2><div className="why-list">{institutional.why.items.map(v => <span key={v}><Check size={16}/>{v}</span>)}</div></section>
       <section className="contact-cta"><small>FALE COM A VESTES!</small><h2>Estamos em Rio Branco, Acre.</h2><p>Entre em contato para conhecer nossos produtos, comprar no varejo ou falar sobre atacado.</p><a className="primary" href={whatsapp}>Falar com a Vestes! <ArrowRight size={18}/></a><strong>VESTES! — Vista seu estilo. Viva sua história.</strong></section>
     </main>
-    <footer id="contato"><div className="footer-brand"><b>{settings.storeName || 'VESTES'}<span>!</span></b><p>Vista seu estilo. Viva sua história.</p></div><div><h4>Atendimento</h4><p><MapPin size={15}/> {settings.city || 'Rio Branco'} - {settings.state || 'AC'}</p><p><Phone size={15}/> {settings.phone || 'Cadastre no painel'}</p></div><div><h4>Localização</h4><p>Rio Branco – Acre, Brasil</p></div><div><h4>Explore</h4><p>Produtos</p><p>Atacado</p><p>Sobre nós</p></div></footer>
+    <footer id="contato"><div className="footer-brand"><b>{settings.storeName || 'VESTES'}<span>!</span></b><p>Vista seu estilo. Viva sua história.</p></div><div><h4>Atendimento</h4><p><MapPin size={15}/> {settings.city || 'Rio Branco'} - {settings.state || 'AC'}</p><p><Phone size={15}/> {settings.phone || 'Cadastre no painel'}</p></div><div><h4>Localização</h4><p>Rio Branco – Acre, Brasil</p></div><div><h4>Explore</h4><p>Produtos</p><p>Atacado</p><p>Sobre nós</p></div><div className="admin-footer"><button className="admin-footer-btn" onClick={() => { window.location.hash = '#admin'; }}><ShieldCheck size={15}/> Área do administrador</button><small>Conteúdo e produtos protegidos por acesso administrativo.</small></div></footer>
   </div>;
 }
 
 function AdminGate({ onExit }) {
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [Admin, setAdmin] = useState(null);
-  const [error, setError] = useState(null);
-  useEffect(() => { let active = true; import('./Admin').then(mod => { if (active) setAdmin(() => mod.default); }).catch(setError); return () => { active = false; }; }, []);
-  if (error) return <div style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24,fontFamily:'Arial',textAlign:'center'}}><div><h1>VESTES!</h1><p>Não foi possível abrir o painel administrativo.</p><button onClick={onExit}>Voltar para a loja</button></div></div>;
+  const [authorized, setAuthorized] = useState(() => sessionStorage.getItem('vestes_admin_auth') === '1');
+  const ADMIN_PASSWORD = 'VESTE@2026';
+  useEffect(() => { if (!authorized) return; let active = true; import('./Admin').then(mod => { if (active) setAdmin(() => mod.default); }).catch(setError); return () => { active = false; }; }, [authorized]);
+  if (!authorized) return <div className="admin-login-screen"><div className="admin-login-card"><div className="admin-login-icon"><ShieldCheck size={25}/></div><div className="app-loading-brand">VESTES<span>!</span></div><h1>Acesso administrativo</h1><p>Digite a senha para acessar as edições da loja.</p><form onSubmit={e => { e.preventDefault(); if (password === ADMIN_PASSWORD) { sessionStorage.setItem('vestes_admin_auth','1'); setAuthorized(true); setError(''); } else setError('Senha incorreta.'); }}><label>Senha<input autoFocus type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Digite sua senha"/></label>{error && <div className="admin-login-error">{error}</div>}<button type="submit" className="admin-login-submit">Entrar no painel</button><button type="button" className="admin-login-back" onClick={onExit}>Voltar para a loja</button></form></div></div>;
+  if (error && !Admin) return <div style={{minHeight:'100vh',display:'grid',placeItems:'center',padding:24,fontFamily:'Arial',textAlign:'center'}}><div><h1>VESTES!</h1><p>Não foi possível abrir o painel administrativo.</p><button onClick={onExit}>Voltar para a loja</button></div></div>;
   if (!Admin) return <div className="app-loading"><div className="app-loading-box"><div className="app-loading-brand">VESTES<span>!</span></div><div className="app-loading-spinner"/><div className="app-loading-text">Abrindo o painel…</div></div></div>;
-  return <Admin onExit={onExit} />;
+  return <Admin onExit={() => { sessionStorage.removeItem('vestes_admin_auth'); onExit(); }} />;
 }
 
 function App(){
