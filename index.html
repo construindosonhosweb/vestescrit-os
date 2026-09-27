@@ -1,33 +1,1136 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#171717"><meta name="description" content="VESTES — Loja de moda em Rio Branco, Acre."><title>VESTES — Moda em Rio Branco</title>
-<style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#faf9f7;color:#171717}body{overflow-x:hidden}.fallback{min-height:100dvh}.fallback-top{padding:8px 16px;background:#171717;color:#fff;text-align:center;font-size:11px;letter-spacing:.08em}.fallback-header{display:flex;align-items:center;justify-content:space-between;padding:16px clamp(16px,4vw,48px);border-bottom:1px solid #e7e1db;background:#faf9f7}.brand{font-size:25px;font-weight:900;text-decoration:none;color:#171717}.brand span{color:#9b5c45}.fallback-main{max-width:1180px;margin:auto;padding:0 20px}.hero{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:70px 0}.hero h1{font-family:Georgia,serif;font-size:clamp(44px,7vw,80px);line-height:.95;margin:12px 0 20px}.hero p{color:#666;line-height:1.7;font-size:17px}.hero-card{min-height:420px;border-radius:18px;overflow:hidden;background:#e9e1d8}.hero-card img{width:100%;height:420px;object-fit:cover}.section{padding:55px 0}.section h2{font-family:Georgia,serif;font-size:clamp(32px,5vw,48px)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid #e8e1da;border-radius:14px;padding:24px}.footer{padding:50px 20px 100px;background:#171717;color:#fff}.footer-inner{max-width:1180px;margin:auto}.admin-fallback{position:fixed;right:18px;bottom:18px;z-index:99999;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 19px;border-radius:999px;background:#9b5c45;color:#fff;text-decoration:none;font-weight:700;font-size:12px;box-shadow:0 8px 24px rgba(0,0,0,.28)}.admin-auth-overlay{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;padding:20px;background:rgba(10,10,10,.72);backdrop-filter:blur(8px)}.admin-auth-card{width:min(430px,100%);background:#fff;border-radius:22px;padding:30px;box-shadow:0 25px 80px rgba(0,0,0,.35)}.admin-auth-card h1{margin:8px 0}.admin-auth-card p{color:#666;line-height:1.5}.admin-auth-card label{display:block;margin:14px 0;font-size:13px;font-weight:700}.admin-auth-card input{display:block;width:100%;margin-top:7px;padding:13px;border:1px solid #ddd;border-radius:10px;font-size:16px}.admin-auth-card button{width:100%;padding:14px;border:0;border-radius:10px;margin-top:8px;font-weight:700;cursor:pointer}.admin-auth-submit{background:#171717;color:#fff}.admin-auth-back{background:#eee;color:#171717}.admin-auth-error{margin:10px 0;padding:10px;border-radius:9px;background:#fff0f0;color:#a22;font-size:13px}.site-footer-nav{display:block!important;grid-column:1/-1!important;width:100%!important;margin-top:24px!important;padding:24px 0 8px!important;border-top:1px solid #3a3a3a!important;color:#fff!important}.site-footer-nav h4{display:block!important;margin:0 0 14px!important;color:#aaa!important;font-size:10px!important;letter-spacing:2px!important}.site-footer-nav .footer-nav-links{display:flex!important;flex-wrap:wrap!important;gap:10px!important;align-items:center!important}.site-footer-nav a{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:38px!important;padding:8px 14px!important;border:1px solid #4a4a4a!important;border-radius:999px!important;background:#222!important;color:#fff!important;font-size:12px!important;font-weight:700!important;text-decoration:none!important;transition:background .2s ease,border-color .2s ease,transform .2s ease!important}.site-footer-nav a:hover,.site-footer-nav a:focus{background:#333!important;border-color:#9b5c45!important;transform:translateY(-1px)!important}.site-footer-nav .admin-nav{background:#9b5c45!important;border-color:#9b5c45!important;color:#fff!important}@media(max-width:799px){.hero{grid-template-columns:1fr;padding:42px 0}.hero-card,.hero-card img{min-height:270px;height:270px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-fallback{right:14px;bottom:14px;min-width:150px}}@media(max-width:430px){.grid{grid-template-columns:1fr}.hero h1{font-size:46px}.site-footer-nav .footer-nav-links{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}.site-footer-nav a{font-size:12px!important;min-height:40px!important;padding:8px 10px!important}}
-</style>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#171717"
+  >
+
+  <meta
+    name="description"
+    content="VESTES — Loja de moda em Rio Branco, Acre."
+  >
+
+  <title>VESTES — Moda em Rio Branco</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #faf9f7;
+      color: #171717;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =========================
+       FALLBACK
+    ========================= */
+
+    .fallback {
+      min-height: 100dvh;
+    }
+
+    .fallback-top {
+      padding: 8px 16px;
+      background: #171717;
+      color: #fff;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+
+    .fallback-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px clamp(16px, 4vw, 48px);
+      border-bottom: 1px solid #e7e1db;
+      background: #faf9f7;
+    }
+
+    .brand {
+      font-size: 25px;
+      font-weight: 900;
+      text-decoration: none;
+      color: #171717;
+    }
+
+    .brand span {
+      color: #9b5c45;
+    }
+
+    .fallback-main {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      padding: 70px 0;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(44px, 7vw, 80px);
+      line-height: .95;
+      margin: 12px 0 20px;
+    }
+
+    .hero p {
+      color: #666;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .hero-card {
+      min-height: 420px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #e9e1d8;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    /* =========================
+       SEÇÕES
+    ========================= */
+
+    .section {
+      padding: 55px 0;
+    }
+
+    .section h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 5vw, 48px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e8e1da;
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    /* =========================
+       RODAPÉ INICIAL
+    ========================= */
+
+    .footer {
+      padding: 50px 20px 70px;
+      background: #171717;
+      color: #fff;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .footer-location {
+      margin: 0;
+      color: #ddd;
+      font-size: 14px;
+    }
+
+    /* MENU DO RODAPÉ */
+
+    .site-footer-nav {
+      display: block;
+      width: 100%;
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid #363636;
+    }
+
+    .site-footer-nav h4 {
+      margin: 0 0 16px;
+      color: #aaa;
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .footer-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-nav-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 14px;
+      border: 1px solid #4a4a4a;
+      border-radius: 999px;
+      background: #222;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+    }
+
+    .footer-nav-links a:hover,
+    .footer-nav-links a:focus {
+      background: #333;
+      border-color: #9b5c45;
+      transform: translateY(-1px);
+    }
+
+    .footer-nav-links .admin-nav {
+      background: #9b5c45;
+      border-color: #9b5c45;
+      color: #fff;
+    }
+
+    /* =========================
+       BOTÃO ADMINISTRADOR
+    ========================= */
+
+    .admin-fallback {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 99999;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 48px;
+      padding: 13px 19px;
+
+      border-radius: 999px;
+
+      background: #9b5c45;
+      color: #fff;
+
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
+
+      cursor: pointer;
+    }
+
+    .admin-fallback:hover {
+      background: #814936;
+    }
+
+    /* =========================
+       LOGIN ADMIN
+    ========================= */
+
+    .admin-auth-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+
+      display: grid;
+      place-items: center;
+
+      padding: 20px;
+
+      background: rgba(10, 10, 10, .72);
+
+      backdrop-filter: blur(8px);
+    }
+
+    .admin-auth-card {
+      width: min(430px, 100%);
+
+      background: #fff;
+
+      border-radius: 22px;
+
+      padding: 30px;
+
+      box-shadow:
+        0 25px 80px rgba(0, 0, 0, .35);
+    }
+
+    .admin-auth-card h1 {
+      margin: 8px 0 12px;
+      font-size: 42px;
+      line-height: .95;
+    }
+
+    .admin-auth-card p {
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .admin-auth-card label {
+      display: block;
+      margin: 14px 0;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .admin-auth-card input {
+      display: block;
+
+      width: 100%;
+
+      margin-top: 7px;
+
+      padding: 13px;
+
+      border: 1px solid #ddd;
+      border-radius: 10px;
+
+      font-size: 16px;
+      outline: none;
+    }
+
+    .admin-auth-card input:focus {
+      border-color: #9b5c45;
+    }
+
+    .admin-auth-card button {
+      width: 100%;
+
+      padding: 14px;
+
+      border: 0;
+      border-radius: 10px;
+
+      margin-top: 8px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    .admin-auth-submit {
+      background: #171717;
+      color: #fff;
+    }
+
+    .admin-auth-submit:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    .admin-auth-back {
+      background: #eee;
+      color: #171717;
+    }
+
+    .admin-auth-back:hover {
+      background: #ddd;
+    }
+
+    .admin-auth-error {
+      margin: 10px 0;
+
+      padding: 10px;
+
+      border-radius: 9px;
+
+      background: #fff0f0;
+      color: #a22;
+
+      font-size: 13px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 799px) {
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 42px 0;
+      }
+
+      .hero-card,
+      .hero-card img {
+        min-height: 270px;
+        height: 270px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .admin-fallback {
+        right: 14px;
+        bottom: 14px;
+        min-width: 150px;
+      }
+
+      .footer {
+        padding-bottom: 90px;
+      }
+    }
+
+    @media (max-width: 430px) {
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .footer-nav-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .footer-nav-links a {
+        min-height: 40px;
+        padding: 8px 10px;
+        font-size: 11px;
+      }
+
+      .admin-auth-card {
+        padding: 24px;
+      }
+
+      .admin-auth-card h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div id="root"><div class="fallback"><div class="fallback-top">RIO BRANCO • ACRE | MODA PARA TODOS OS MOMENTOS</div><header class="fallback-header"><a class="brand" href="#inicio">VESTES<span>!</span></a></header><main class="fallback-main"><section class="hero" id="inicio"><div><small>VESTES! • RIO BRANCO — ACRE</small><h1>Seu estilo começa aqui.</h1><p>Descubra roupas, calçados e acessórios para transformar seu estilo em cada ocasião.</p></div><div class="hero-card"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=65" alt="Moda VESTES" fetchpriority="high"></div></section><section class="section"><small>EXPLORE</small><h2>Encontre seu estilo.</h2><div class="grid"><div class="card"><strong>Feminino</strong></div><div class="card"><strong>Masculino</strong></div><div class="card"><strong>Calçados</strong></div><div class="card"><strong>Acessórios</strong></div></div></section></main><footer class="footer"><div class="footer-inner"><strong>VESTES!</strong><p>Rio Branco – Acre, Brasil</p></div></footer></div></div>
-<a class="admin-fallback" href="#admin" aria-label="Abrir área do administrador">🔐 Área do administrador</a>
-<script type="module">
-import{supabase}from'./src/lib/supabase.js';
-const showAuth=()=>{if(window.location.hash!=='#admin'||sessionStorage.getItem('vestes_admin_auth')==='1')return;let old=document.getElementById('admin-auth-overlay');if(old)return;const el=document.createElement('div');el.id='admin-auth-overlay';el.className='admin-auth-overlay';el.innerHTML='<div class="admin-auth-card"><div style="font-size:28px">🔐</div><h1>Acesso administrativo</h1><p>Use o Gmail/e-mail e a senha cadastrados no Supabase.</p><form id="admin-auth-form"><label>E-mail / Gmail<input id="admin-email" type="email" autocomplete="username" placeholder="seuemail@gmail.com" required></label><label>Senha<input id="admin-password" type="password" autocomplete="current-password" placeholder="Sua senha" required></label><div id="admin-auth-error" class="admin-auth-error" style="display:none"></div><button class="admin-auth-submit" type="submit">Entrar no painel</button><button class="admin-auth-back" type="button" id="admin-auth-back">Voltar para a loja</button></form></div>';document.body.appendChild(el);el.querySelector('#admin-auth-back').onclick=()=>{window.location.hash=''};el.querySelector('#admin-auth-form').onsubmit=async e=>{e.preventDefault();const btn=el.querySelector('.admin-auth-submit');const err=el.querySelector('#admin-auth-error');btn.disabled=true;btn.textContent='Entrando…';err.style.display='none';const{error}=await supabase.auth.signInWithPassword({email:el.querySelector('#admin-email').value.trim(),password:el.querySelector('#admin-password').value});if(error){err.textContent=error.message||'E-mail ou senha inválidos.';err.style.display='block';btn.disabled=false;btn.textContent='Entrar no painel';return}sessionStorage.setItem('vestes_admin_auth','1');el.remove();window.location.hash='#admin'}};
-window.addEventListener('hashchange',showAuth);showAuth();
-</script>
-<script>
-(function(){
-  const links=[['Início','#inicio'],['Produtos','#produtos'],['Categorias','#categorias'],['Novidades','#novidades'],['Nossas Histórias','#historias'],['Atacado','#atacado'],['Contato','#contato'],['🔐 Área do administrador','#admin']];
-  function addFooterNav(){
-    document.querySelectorAll('footer').forEach(function(footer){
-      if(footer.querySelector('.site-footer-nav')) return;
-      const box=document.createElement('div'); box.className='site-footer-nav';
-      box.innerHTML='<h4>NAVEGAÇÃO</h4><div class="footer-nav-links">'+links.map(function(item){return '<a href="'+item[1]+'" class="'+(item[1]==='#admin'?'admin-nav':'')+'">'+item[0]+'</a>';}).join('')+'</div>';
-      footer.appendChild(box);
-    });
-  }
-  addFooterNav();
-  new MutationObserver(addFooterNav).observe(document.body,{childList:true,subtree:true});
-})();
-</script>
-<script type="module" src="./src/main.jsx"></script>
-</body></html>
+
+  <!-- =====================================================
+       APLICAÇÃO / FALLBACK
+  ====================================================== -->
+
+  <div id="root">
+
+    <div class="fallback">
+
+      <!-- TOPO -->
+      <div class="fallback-top">
+        RIO BRANCO • ACRE | MODA PARA TODOS OS MOMENTOS
+      </div>
+
+      <!-- CABEÇALHO -->
+      <header class="fallback-header">
+
+        <a
+          class="brand"
+          href="https://vestescrista.com.br/#inicio"
+        >
+          VESTES<span>!</span>
+        </a>
+
+      </header>
+
+      <!-- CONTEÚDO -->
+      <main class="fallback-main">
+
+        <!-- INÍCIO -->
+        <section
+          class="hero"
+          id="inicio"
+        >
+
+          <div>
+
+            <small>
+              VESTES! • RIO BRANCO — ACRE
+            </small>
+
+            <h1>
+              Seu estilo começa aqui.
+            </h1>
+
+            <p>
+              Descubra roupas, calçados e acessórios
+              para transformar seu estilo em cada ocasião.
+            </p>
+
+          </div>
+
+          <div class="hero-card">
+
+            <img
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=65"
+              alt="Moda VESTES"
+              fetchpriority="high"
+            >
+
+          </div>
+
+        </section>
+
+        <!-- EXPLORAR -->
+        <section class="section">
+
+          <small>
+            EXPLORE
+          </small>
+
+          <h2>
+            Encontre seu estilo.
+          </h2>
+
+          <div class="grid">
+
+            <div class="card">
+              <strong>
+                Feminino
+              </strong>
+            </div>
+
+            <div class="card">
+              <strong>
+                Masculino
+              </strong>
+            </div>
+
+            <div class="card">
+              <strong>
+                Calçados
+              </strong>
+            </div>
+
+            <div class="card">
+              <strong>
+                Acessórios
+              </strong>
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      <!-- =====================================================
+           RODAPÉ INICIAL COM MENU
+      ====================================================== -->
+
+      <footer class="footer">
+
+        <div class="footer-inner">
+
+          <div class="footer-brand">
+            VESTES!
+          </div>
+
+          <p class="footer-location">
+            Rio Branco – Acre, Brasil
+          </p>
+
+          <!-- MENU PRINCIPAL DO RODAPÉ -->
+
+          <nav
+            class="site-footer-nav"
+            aria-label="Navegação do rodapé"
+          >
+
+            <h4>
+              NAVEGAÇÃO
+            </h4>
+
+            <div class="footer-nav-links">
+
+              <a href="https://vestescrista.com.br/#inicio">
+                Início
+              </a>
+
+              <a href="https://vestescrista.com.br/#produtos">
+                Produtos
+              </a>
+
+              <a href="https://vestescrista.com.br/#categorias">
+                Categorias
+              </a>
+
+              <a href="https://vestescrista.com.br/#novidades">
+                Novidades
+              </a>
+
+              <a href="https://vestescrista.com.br/#historias">
+                Nossas Histórias
+              </a>
+
+              <a href="https://vestescrista.com.br/#atacado">
+                Atacado
+              </a>
+
+              <a href="https://vestescrista.com.br/#contato">
+                Contato
+              </a>
+
+              <a
+                href="https://vestescrista.com.br/#admin"
+                class="admin-nav"
+              >
+                🔐 Área do administrador
+              </a>
+
+            </div>
+
+          </nav>
+
+        </div>
+
+      </footer>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       BOTÃO FLUTUANTE ADMINISTRADOR
+  ====================================================== -->
+
+  <a
+    class="admin-fallback"
+    href="https://vestescrista.com.br/#admin"
+    aria-label="Abrir área do administrador"
+  >
+    🔐 Área do administrador
+  </a>
+
+
+  <!-- =====================================================
+       AUTENTICAÇÃO SUPABASE
+  ====================================================== -->
+
+  <script type="module">
+
+    import {
+      supabase
+    } from './src/lib/supabase.js';
+
+
+    function showAuth() {
+
+      /*
+       * Só abre a tela de login quando estiver em #admin.
+       */
+
+      if (
+        window.location.hash !== '#admin' ||
+        sessionStorage.getItem('vestes_admin_auth') === '1'
+      ) {
+        return;
+      }
+
+
+      /*
+       * Evita criar duas telas de login.
+       */
+
+      if (
+        document.getElementById('admin-auth-overlay')
+      ) {
+        return;
+      }
+
+
+      const el =
+        document.createElement('div');
+
+
+      el.id =
+        'admin-auth-overlay';
+
+      el.className =
+        'admin-auth-overlay';
+
+
+      el.innerHTML = `
+
+        <div class="admin-auth-card">
+
+          <div style="font-size:28px">
+            🔐
+          </div>
+
+          <h1>
+            Acesso administrativo
+          </h1>
+
+          <p>
+            Use o Gmail/e-mail e a senha
+            cadastrados no Supabase.
+          </p>
+
+          <form id="admin-auth-form">
+
+            <label>
+              E-mail / Gmail
+
+              <input
+                id="admin-email"
+                type="email"
+                autocomplete="username"
+                placeholder="seuemail@gmail.com"
+                required
+              >
+
+            </label>
+
+
+            <label>
+              Senha
+
+              <input
+                id="admin-password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="Sua senha"
+                required
+              >
+
+            </label>
+
+
+            <div
+              id="admin-auth-error"
+              class="admin-auth-error"
+              style="display:none"
+            ></div>
+
+
+            <button
+              class="admin-auth-submit"
+              type="submit"
+            >
+              Entrar no painel
+            </button>
+
+
+            <!-- BOTÃO CORRIGIDO -->
+
+            <button
+              class="admin-auth-back"
+              type="button"
+              id="admin-auth-back"
+            >
+              Voltar para a loja
+            </button>
+
+          </form>
+
+        </div>
+
+      `;
+
+
+      document.body.appendChild(el);
+
+
+      /*
+       * BOTÃO "VOLTAR PARA A LOJA"
+       *
+       * Antes:
+       * window.location.hash = '';
+       *
+       * Agora:
+       * vai diretamente para a página inicial.
+       */
+
+      const backButton =
+        el.querySelector('#admin-auth-back');
+
+
+      backButton.onclick = function () {
+
+        /*
+         * Remove a autenticação temporária
+         * caso exista.
+         */
+
+        sessionStorage.removeItem(
+          'vestes_admin_auth'
+        );
+
+
+        /*
+         * Redirecionamento direto
+         * para a página inicial.
+         */
+
+        window.location.href =
+          'https://vestescrista.com.br/#inicio';
+
+      };
+
+
+      /*
+       * LOGIN ADMINISTRATIVO
+       */
+
+      const form =
+        el.querySelector('#admin-auth-form');
+
+
+      form.onsubmit =
+        async function (e) {
+
+          e.preventDefault();
+
+
+          const btn =
+            el.querySelector(
+              '.admin-auth-submit'
+            );
+
+
+          const err =
+            el.querySelector(
+              '#admin-auth-error'
+            );
+
+
+          btn.disabled = true;
+
+          btn.textContent =
+            'Entrando…';
+
+          err.style.display =
+            'none';
+
+
+          const email =
+            el.querySelector(
+              '#admin-email'
+            ).value.trim();
+
+
+          const password =
+            el.querySelector(
+              '#admin-password'
+            ).value;
+
+
+          const {
+            error
+          } =
+            await supabase.auth.signInWithPassword({
+
+              email: email,
+
+              password: password
+
+            });
+
+
+          /*
+           * ERRO DE LOGIN
+           */
+
+          if (error) {
+
+            err.textContent =
+              error.message ||
+              'E-mail ou senha inválidos.';
+
+            err.style.display =
+              'block';
+
+            btn.disabled =
+              false;
+
+            btn.textContent =
+              'Entrar no painel';
+
+            return;
+
+          }
+
+
+          /*
+           * LOGIN REALIZADO
+           */
+
+          sessionStorage.setItem(
+            'vestes_admin_auth',
+            '1'
+          );
+
+
+          /*
+           * Remove a tela de login.
+           */
+
+          el.remove();
+
+
+          /*
+           * Mantém o administrador em #admin.
+           * O sistema React pode assumir o painel
+           * administrativo a partir daqui.
+           */
+
+          window.location.hash =
+            '#admin';
+
+        };
+
+    }
+
+
+    /*
+     * Monitora alterações do endereço.
+     */
+
+    window.addEventListener(
+      'hashchange',
+      showAuth
+    );
+
+
+    /*
+     * Verifica ao carregar.
+     */
+
+    showAuth();
+
+  </script>
+
+
+  <!-- =====================================================
+       COMPATIBILIDADE COM O RODAPÉ DO REACT
+  ====================================================== -->
+
+  <script>
+
+    (function () {
+
+      const links = [
+
+        [
+          'Início',
+          'https://vestescrista.com.br/#inicio'
+        ],
+
+        [
+          'Produtos',
+          'https://vestescrista.com.br/#produtos'
+        ],
+
+        [
+          'Categorias',
+          'https://vestescrista.com.br/#categorias'
+        ],
+
+        [
+          'Novidades',
+          'https://vestescrista.com.br/#novidades'
+        ],
+
+        [
+          'Nossas Histórias',
+          'https://vestescrista.com.br/#historias'
+        ],
+
+        [
+          'Atacado',
+          'https://vestescrista.com.br/#atacado'
+        ],
+
+        [
+          'Contato',
+          'https://vestescrista.com.br/#contato'
+        ],
+
+        [
+          '🔐 Área do administrador',
+          'https://vestescrista.com.br/#admin'
+        ]
+
+      ];
+
+
+      /*
+       * Se o React substituir o fallback,
+       * garante que o menu continue existindo.
+       */
+
+      function addFooterNav() {
+
+        document
+          .querySelectorAll('footer')
+          .forEach(function (footer) {
+
+
+            /*
+             * Se já existe um menu,
+             * não cria outro.
+             */
+
+            if (
+              footer.querySelector(
+                '.site-footer-nav'
+              )
+            ) {
+              return;
+            }
+
+
+            const box =
+              document.createElement('nav');
+
+
+            box.className =
+              'site-footer-nav';
+
+
+            box.setAttribute(
+              'aria-label',
+              'Navegação do rodapé'
+            );
+
+
+            let html =
+              '<h4>NAVEGAÇÃO</h4>';
+
+
+            html +=
+              '<div class="footer-nav-links">';
+
+
+            links.forEach(
+              function (item) {
+
+                const isAdmin =
+                  item[1].includes('#admin');
+
+
+                html +=
+                  '<a href="' +
+                  item[1] +
+                  '"' +
+                  (
+                    isAdmin
+                      ? ' class="admin-nav"'
+                      : ''
+                  ) +
+                  '>' +
+                  item[0] +
+                  '</a>';
+
+              }
+            );
+
+
+            html +=
+              '</div>';
+
+
+            box.innerHTML =
+              html;
+
+
+            footer.appendChild(box);
+
+          });
+
+      }
+
+
+      /*
+       * Executa imediatamente.
+       */
+
+      addFooterNav();
+
+
+      /*
+       * Se o React modificar a página,
+       * executa novamente.
+       */
+
+      const observer =
+        new MutationObserver(
+          function () {
+            addFooterNav();
+          }
+        );
+
+
+      observer.observe(
+        document.body,
+        {
+          childList: true,
+          subtree: true
+        }
+      );
+
+    })();
+
+  </script>
+
+
+  <!-- =====================================================
+       APLICAÇÃO REACT
+  ====================================================== -->
+
+  <script
+    type="module"
+    src="./src/main.jsx"
+  ></script>
+
+</body>
+
+</html>
